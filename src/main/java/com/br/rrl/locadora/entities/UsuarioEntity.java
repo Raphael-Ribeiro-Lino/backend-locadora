@@ -34,7 +34,7 @@ public class UsuarioEntity implements UserDetails{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "email", unique = true)
+	@Column(name = "e-mail", unique = true)
 	private String email;
 	
 	@Column(name = "nome_completo", unique = true)
@@ -45,7 +45,7 @@ public class UsuarioEntity implements UserDetails{
 	
 	@Column(name = "perfil")
 	@Enumerated(EnumType.STRING)
-	private PerfilEnum perfil;
+	private PerfilEnum perfil = PerfilEnum.CLIENTE;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
