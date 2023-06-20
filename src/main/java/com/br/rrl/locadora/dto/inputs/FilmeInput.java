@@ -15,5 +15,5 @@ public class FilmeInput {
 	private String diretor;
 	
 	@NotBlank(message = "O campo quantidade é obrigatório")
-	private int quantidade = 1;
+	private int quantidade;
 }
