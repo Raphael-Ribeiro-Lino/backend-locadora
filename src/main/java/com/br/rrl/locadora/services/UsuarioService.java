@@ -1,5 +1,7 @@
 package com.br.rrl.locadora.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,9 @@ public class UsuarioService {
 	public UsuarioEntity buscaPorId(Long id) {
 		return usuarioRepository.findById(id)
 				.orElseThrow(() -> new NotFoundBussinessException("Usuário " + id + " não encontrado"));
+	}
+
+	public List<UsuarioEntity> listaTodos() {
+		return usuarioRepository.findAll();
 	}
 }
