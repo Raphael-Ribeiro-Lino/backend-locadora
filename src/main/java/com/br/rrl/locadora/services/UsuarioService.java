@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.br.rrl.locadora.entities.UsuarioEntity;
+import com.br.rrl.locadora.exceptions.NotFoundBussinessException;
 import com.br.rrl.locadora.repositories.UsuarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -20,5 +21,15 @@ public class UsuarioService {
 		String senha = usuarioEntity.getSenha();
 		usuarioEntity.setSenha(new BCryptPasswordEncoder().encode(senha));
 		return usuarioRepository.save(usuarioEntity);
+	}
+
+	public UsuarioEntity buscaPorEmail(String email) {
+		return usuarioRepository.findByEmail(email)
+				.orElseThrow(() -> new NotFoundBussinessException("Usuário não encontrado"));
+	}
+
+	public UsuarioEntity buscaPorId(Long id) {
+		return usuarioRepository.findById(id)
+				.orElseThrow(() -> new NotFoundBussinessException("Usuário " + id + " não encontrado"));
 	}
 }
