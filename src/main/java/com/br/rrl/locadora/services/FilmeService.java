@@ -28,4 +28,8 @@ public class FilmeService {
 	public Page<FilmeEntity> listaTodos(Pageable paginacao) {
 		return filmeRepository.findAll(paginacao);
 	}
+
+	public Page<FilmeEntity> buscaPorTitulo(Pageable paginacao, String titulo) {
+		return filmeRepository.findByTituloContains(titulo, paginacao);
+	}
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,6 +47,12 @@ public class FilmeController {
 	@PodeAcessarSe.EstaAutenticado
 	public Page<FilmeOutput> listaTodos(@PageableDefault(sort = "titulo", direction = Direction.ASC) Pageable paginacao){
 		Page<FilmeEntity> filmes = filmeService.listaTodos(paginacao);
+		return filmeConvert.pageEntityToPageOutput(filmes);
+	}
+	
+	@GetMapping()
+	public Page<FilmeOutput> buscaPorTitulo(@PageableDefault(sort = "titulo", direction = Direction.ASC) Pageable paginacao, @RequestParam String titulo){
+		Page<FilmeEntity> filmes = filmeService.buscaPorTitulo(paginacao, titulo);
 		return filmeConvert.pageEntityToPageOutput(filmes);
 	}
 }
