@@ -17,7 +17,7 @@ import lombok.Setter;
 @Table(name = "tb_filmes_usuarios")
 @Getter
 @Setter
-public class FilmesUsuarioEntity {
+public class FilmesUsuariosEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
