@@ -74,6 +74,9 @@ public class TokenService {
 
 	private Claims extractClaims() {
 		String token = resquest.getHeader("Authorization");
+		if(token == null) {
+			throw new UnauthorizedAccessBussinessException("Acesso Negado!");
+		}
 		token = token.substring(7);
 		try {
 			return Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody();
