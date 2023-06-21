@@ -69,7 +69,7 @@ public class TokenService {
 				return true;
 			}
 		}
-		return false;
+		throw new UnauthorizedAccessBussinessException("Acesso Negado!");
 	}
 
 	private Claims extractClaims() {

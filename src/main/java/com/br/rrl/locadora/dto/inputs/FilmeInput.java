@@ -1,6 +1,8 @@
 package com.br.rrl.locadora.dto.inputs;
 
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,15 @@ public class FilmeInput {
 	@NotBlank(message = "O campo diretor é obrigatório")
 	private String diretor;
 	
-	@NotBlank(message = "O campo quantidade é obrigatório")
+	@NotNull(message = "O campo quantidade é obrigatório")
 	private int quantidade;
+	
+	@AssertTrue(message = "O campo quantidade está inválido")
+	public boolean isNomeQuantidadeValida() {
+		if(quantidade == 0) {
+			return false;
+		}
+		
+		return true;
+	}
 }
