@@ -2,6 +2,7 @@ package com.br.rrl.locadora.converts;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.br.rrl.locadora.dto.inputs.FilmeInput;
@@ -22,5 +23,9 @@ public class FilmeConvert {
 
 	public FilmeOutput entityToOutput(FilmeEntity filmeCadastrado) {
 		return modelMapper.map(filmeCadastrado, FilmeOutput.class);
+	}
+
+	public Page<FilmeOutput> pageEntityToPageOutput(Page<FilmeEntity> filmes) {
+		return filmes.map(this::entityToOutput);
 	}
 }
