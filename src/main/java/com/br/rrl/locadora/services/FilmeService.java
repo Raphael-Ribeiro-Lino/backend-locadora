@@ -39,6 +39,7 @@ public class FilmeService {
 				.orElseThrow(() -> new NotFoundBussinessException("Filme " + idFilme + " não encontrado!"));
 	}
 
+	@Transactional
 	public void alteraQuantidade(FilmeEntity filmeEntity) {
 		filmeRepository.save(filmeEntity);
 	}

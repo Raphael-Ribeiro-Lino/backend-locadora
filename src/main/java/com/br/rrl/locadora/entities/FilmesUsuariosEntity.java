@@ -36,4 +36,7 @@ public class FilmesUsuariosEntity {
 	
 	@Column(name = "data_devolucao")
 	private LocalDateTime dataDevolucao;
+	
+	@Column(name = "devolvido")
+	private boolean devolvido = false;
 }

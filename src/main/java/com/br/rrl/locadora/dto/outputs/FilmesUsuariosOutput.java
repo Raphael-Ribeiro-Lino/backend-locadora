@@ -19,4 +19,6 @@ public class FilmesUsuariosOutput {
 	
 	private LocalDateTime dataDevolucao;
 	
+	private boolean devolvido;
+	
 }
